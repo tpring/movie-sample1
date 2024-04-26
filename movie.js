@@ -1,4 +1,8 @@
-const apiKey = '657ffd22014acc1e3761178b24efa6fe';
+// config/key.js
+
+const apiKey = 'your_api_key_here';
+
+export default apiKey;
 let page = 1;
 let totalPages;
 
