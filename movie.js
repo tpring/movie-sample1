@@ -1,13 +1,11 @@
-// config/key.js
+import API_KEY from './config/key.js'; // API 키를 가져옵니다.
 
-const apiKey = 'your_api_key_here';
-
-export default apiKey;
 let page = 1;
 let totalPages;
 
 // 초기 영화 목록 표시
-fetchMovies(`https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=ko-KR&page=${page}`);
+fetchMovies(`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=ko-KR&page=${page}`);
+
 
 // 검색 버튼 클릭 시 검색어 가져와서 영화 검색
 document.getElementById('search-button').addEventListener('click', function() {
