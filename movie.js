@@ -1,4 +1,4 @@
-import API_KEY from './config/key.js'; // API 키를 가져옵니다.
+import API_KEY from './key.js'; // API 키를 가져옵니다.
 
 let page = 1;
 let totalPages;
