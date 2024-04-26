@@ -46,6 +46,17 @@ document.getElementById('next-button').addEventListener('click', function() {
     }
 });
 
+// 영화 카드 클릭 시
+document.addEventListener('click', function (event) {
+    const movieCard = event.target.closest('.movie');
+    if (movieCard) {
+        const movieId = movieCard.dataset.movieId;
+        if (movieId) {
+            alert(`클릭한 영화의 ID는 ${movieId} 입니다.`);
+        }
+    }
+});
+
 // 영화 가져와서 화면에 표시하는 함수
 function fetchMovies(movieUrl) {
     document.getElementById('movie-container').innerHTML = ''; // 이전에 표시된 영화 목록 제거
@@ -55,11 +66,11 @@ function fetchMovies(movieUrl) {
             totalPages = data.total_pages;
             const movies = data.results;
             movies.forEach(movie => {
-                const { poster_path, title, overview, vote_average } = movie;
+                const {id, poster_path, title, overview, vote_average } = movie;
                 const moviePosterPath = poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : 'https://via.placeholder.com/300';
                 const movieCard = `
-                    <div class="movie">
-                        <img src="${moviePosterPath}" alt="${title} Poster">
+                    <div class="movie" data-movie-id="${id}">
+                        <img src="${moviePosterPath}">
                         <h2>${title}</h2>
                         <p>${overview}</p>
                         <p>평점: ${vote_average}</p>
@@ -74,17 +85,17 @@ function fetchMovies(movieUrl) {
 // 영화 검색해서 화면에 표시하는 함수
 function searchMovies(searchUrl) {
     document.getElementById('movie-container').innerHTML = ''; // 이전에 표시된 영화 목록 제거
-    fetch(searchUrl) // 여기서 fetch 호출을 사용하도록 수정
+    fetch(searchUrl)
         .then(response => response.json())
         .then(data => {
             totalPages = data.total_pages;
             const movies = data.results;
             movies.forEach(movie => {
-                const { poster_path, title, overview, vote_average } = movie;
+                const {id, poster_path, title, overview, vote_average } = movie;
                 const moviePosterPath = poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : 'https://via.placeholder.com/300';
                 const movieCard = `
-                    <div class="movie">
-                        <img src="${moviePosterPath}" alt="${title} Poster">
+                    <div class="movie"data-movie-id="${id}">
+                        <img src="${moviePosterPath}">
                         <h2>${title}</h2>
                         <p>${overview}</p>
                         <p>평점: ${vote_average}</p>
