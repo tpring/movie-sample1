@@ -1,10 +1,11 @@
-import API_KEY from './key.js'; // API 키를 가져옵니다.
+//import apiKey from './key.js'; // API 키를 가져옵니다. (노력했는데 실패했어요..)
+const apiKey = '657ffd22014acc1e3761178b24efa6fe';
 
 let page = 1;
 let totalPages;
 
 // 초기 영화 목록 표시
-fetchMovies(`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=ko-KR&page=${page}`);
+fetchMovies(`https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=ko-KR&page=${page}`);
 
 
 // 검색 버튼 클릭 시 검색어 가져와서 영화 검색
@@ -48,7 +49,7 @@ document.getElementById('next-button').addEventListener('click', function() {
     }
 });
 
-// 영화 카드 클릭 시
+// 영화 카드 클릭 시 id 나오기 
 document.addEventListener('click', function (event) {
     const movieCard = event.target.closest('.movie');
     if (movieCard) {
