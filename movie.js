@@ -75,7 +75,6 @@ function displayMovies(url) {
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      totalPages = data.total_pages;
       const movies = data.results;
       movies.forEach((movie) => {
         const { id, poster_path, title, overview, vote_average } = movie;
