@@ -11,8 +11,13 @@ fetchMovies(`https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&lang
 // 검색 버튼 클릭 시 검색어 가져와서 영화 검색
 document.getElementById('search-button').addEventListener('click', function() {
     page = 1; // 검색 시 페이지 초기화
-    const searchTerm = document.getElementById('search-input').value; // 검색어 가져오기
-    searchMovies(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=ko-KR&query=${searchTerm}&page=${page}`);
+    searchTerm= document.getElementById('search-input').value
+    if(searchTerm) {
+        searchMovies(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=ko-KR&query=${searchTerm}&page=${page}`);
+} else {
+    fetchMovies(`https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=ko-KR&page=${page}`);
+}
+
 });
 
 // 엔터 키로 검색 가능하게 하기
